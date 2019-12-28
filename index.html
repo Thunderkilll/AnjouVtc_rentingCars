@@ -19,12 +19,16 @@
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link href="netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
     
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap/custum_alert.css">
+
   </head>
   <body>
     
@@ -158,7 +162,27 @@
 	  						</div>
 	  					</div>
 	  				</div>
-				</div>
+        </div>
+         
+          <div class="row">
+             <br><br>
+            <div class="error-notice">
+                  <div class="oaerror danger" id="danger">
+                    
+                  </div>
+                  <!--div class="oaerror warning">
+                    <strong>Error</strong> - You left a field Blank
+                  </ div -->
+                  <!--div class="oaerror info">
+                    <strong>Error</strong> - Please Select a Different Username
+                  </ div -->
+                  <div class="oaerror success" id="success">
+                     
+                  </div>
+                  
+                </div>
+          </div>
+      
   		</div>
     </section>
 
@@ -512,6 +536,7 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.easing.1.3.js"></script>
