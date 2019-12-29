@@ -1,14 +1,25 @@
 <?php
 
-
-require('DB.php');
+require('connectionDB.php');
  
 mysqli_set_charset($conn ,"utf8");
  
-$name = $_GET["name"];
-$pwd =  $_GET["password"];
-$img = $_GET["image"];
-$sql = "INSERT INTO login (name , password , image)  VALUES ('".$_GET["name"]."', '".$_GET["password"]."','".$_GET["image"]."')";
+$picup = $_GET["picup"];
+$dropoff =  $_GET["dropoff"];
+$date_pickup = $_GET["date_pickup"];
+$date_dropoff = $_GET["date_dropoff"];
+$name =  $_GET["name"];
+$telephone = $_GET["telephone"];
+ 
+ 
+$sql = "INSERT INTO `lingued`.`reservation` (
+`picup` ,
+`dropoff` ,
+`date_pickup` ,
+`date_dropoff` ,
+`name` ,
+`telephone`
+)  VALUES ('".$picup."', '".$dropoff."','".$date_pickup."','".$date_dropoff."','".$name."','".$telephone."');";
 
 $result = $conn->query($sql);
 
