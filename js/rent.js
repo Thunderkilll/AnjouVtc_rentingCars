@@ -19,8 +19,18 @@ var rent = function() {
 
         if (location_start =="" || location_drop =="" || pickup_date =="" || drop_date =="" || time_calender ==""  ) {
             if (location_start =="" && location_drop =="" && pickup_date =="" && drop_date =="" && time_calender =="" ) {
-                alert('please complete the informations in the form');
+                 //visibility 
+             alert.style.visibility="visible"; ;
+             //create alert 
+             alert.innerHTML="<strong> Erreur  </strong>   - Tout les champs sont vides  ";
+             //show alert 
+              window.setTimeout(function() {
+                  $("#danger").fadeTo(500, 0).slideUp(500, function(){
+                      $(this).remove(); 
+                  });
+              }, 4000);
             }else{
+
                 if (location_start =="") {
                     //show alert visibility 
                      alert.style.visibility="visible";
@@ -83,7 +93,7 @@ var rent = function() {
                 }
             }
            
-        }else{
+        } 
             console.log('pick location :'+ location_start);
             console.log('drop location :'+ location_drop);
             console.log('pick date :'+ pickup_date);
@@ -125,13 +135,13 @@ var rent = function() {
         console.log("today and start day are the same : " + same);
         console.log("today and start day aren't the same   : " + notSame);
 
-        console.log(dates.compare(date1 , date2));
+        console.log("compare "+dates.compare(date1 , date2));
         
         if (dates.compare(date1 , date2) == 1) {
             //visibility 
               alert.style.visibility="visible"; ;  
            //create alert 
-           alert.innerHTML="<strong> Erreur  </strong>   - la date de départ depasse la date de fin  ";
+           alert.innerHTML="<strong> Erreur  </strong>   - la date de départ : "+ pickup_date +" dépasse la date :"+ drop_date + "de fin  ";
            //show alert 
             window.setTimeout(function() {
                 $("#danger").fadeTo(500, 0).slideUp(500, function(){
@@ -139,18 +149,9 @@ var rent = function() {
                 });
             }, 4000);
         }
-        //visibility 
-        success.style.visibility =  "visible" ;
-        //create alert 
-        success.innerHTML=" <strong>Yeppi</strong> - vous avez réserver avec success  ";
-        //show alert 
-         window.setTimeout(function() {
-             $("#success").fadeTo(500, 0).slideUp(500, function(){
-                 $(this).remove(); 
-             });
-         }, 4000);
+      
 
-    }
+  
 
 
     });
@@ -159,7 +160,18 @@ var rent = function() {
  
       
 })(jQuery);
-        
+        /*
+ //visibility 
+   success.style.visibility =  "visible" ;
+   //create alert 
+   success.innerHTML=" <strong>Yeppi</strong> - vous avez réserver avec success  ";
+   //show alert 
+    window.setTimeout(function() {
+        $("#success").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 4000);
+        */
         //var dd = String(today.getDate()).padStart(2, '0');
        // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         //var yyyy = today.getFullYear();
