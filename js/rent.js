@@ -191,11 +191,25 @@ var rent = function() {
               success.style.visibility="visible"; ;  
            //create alert 
            success.innerHTML="<strong> Success  </strong>   - vous avez bien remplis la form de reservation merci pour votre attention   ";
+           //send to database 
+           let xhr = new XMLHttpRequest();
+         
+           xhr.open('GET', 'http://41.226.11.252:1180/lingued/miniProjetWebService/reserver.php?picup='+location_start+'&dropoff='+
+           location_drop+'&date_pickup='+pickup_date+'&date_dropoff='+drop_date+'&name='+name_client+'&telephone='+phone_numb );
+           xhr.responseType = 'json';
+           xhr.send();
+           xhr.onload = function() {
+
+               let responseObj = xhr.response;
+               console.log(responseObj);
+               sendmail();              
+           };
+           
            //show alert 
             window.setTimeout(function() {
                 $("#success").fadeTo(500, 0).slideUp(500, function(){
                     $(this).remove(); 
-                    location.reload();
+                      
                 });
             }, 4000);
             
@@ -233,7 +247,18 @@ var rent = function() {
        //console.log("the same date : " + same);
        //console.log("not the same date : " + notSame);
         
+function sendmail() {
+    xhr.open('GET', 'http://41.226.11.252:1180/lingued/miniProjetWebService/admin_mail.php' );
+    xhr.responseType = 'json';
+    xhr.send();
+    console.log("mail sent ");
+    xhr.onload = function() {
 
+        let responseObj = xhr.response;
+        console.log(responseObj);
+                      
+    };
+}
  
     var dates = {
         convert:function(d) {
