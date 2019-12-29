@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link href="netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
     
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
@@ -36,7 +36,7 @@
 
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-        <img src="images/wingedLogo2.png" alt="logo" style="width: 20%; height: 20%;">
+        <img src="images/wingedLogo2.png" alt="logo" style="width: 20%; height: 20%;" onclick="gotomain()">
         <a class="navbar-brand" href="index.html">ANJOU. <span>VTC</span></a>
        
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,9 +49,7 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
 	          <li class="nav-item"><a href="pricing.html" class="nav-link">Offre Entreprise</a></li>
-	         
- 
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -106,22 +104,32 @@
 			    				<div class="d-flex">
 			    					<div class="form-group mr-2">
 			                <label for="" class="label">Pick-up date</label>
-			                <input type="text"   class="form-control" id="book_pick_date" placeholder="Date" oncopy="return false" onpaste="return false" oncut="return false"> 
+			                <input type="text"   class="form-control" id="book_pick_date" placeholder="Date" oncopy="return false" onpaste="return false" oncut="return false" required> 
 			              </div>
 			              <div class="form-group ml-2">
 			                <label for="" class="label">Drop-off date</label>
-			                <input type="text"  class="form-control" id="book_off_date" placeholder="Date" oncopy="return false" onpaste="return false" oncut="return false">
+			                <input type="text"  class="form-control" id="book_off_date" placeholder="Date" oncopy="return false" onpaste="return false" oncut="return false" required>
 			              </div>
 		              </div>
 		              <div class="form-group">
-		                <label for="" class="label">Pick-up time</label>
-		                <input type="text"   class="form-control" id="time_pick" placeholder="Time" oncopy="return false" onpaste="return false" oncut="return false">
-		              </div>
+		                <label for="" class="label">Nom Client </label>
+		                <input type="text"   class="form-control" id="name_client" placeholder="votre Nom ici" oncopy="return false" onpaste="return false" oncut="return false" required>
+                  </div>
+                  <div class="form-group">
+			    					<label for="" class="label">Téléphone Client </label>
+			    					<input type="text" id="phone_numb" class="form-control" placeholder="Votre numéro téléphone" oncopy="return false" onpaste="return false" oncut="return false" required pattern="[0-9]{8,10}" required>
+			    				</div>
 			            <div class="form-group">
 			              <input type="submit" id="rent_btn" value="Reserve a Ride Trip" class="btn btn-secondary py-3 px-4">
 			            </div>
 			    			</form>
-	  					</div>
+              </div>
+              
+
+
+
+
+
 	  					<div class="col-md-8 d-flex align-items-center">
 	  						<div class="services-wrap rounded-right w-100">
 	  							<h3 class="heading-section mb-4">Better Way to Get a Ride from Angers </h3>

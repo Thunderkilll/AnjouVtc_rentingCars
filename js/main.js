@@ -343,3 +343,7 @@
 
 })(jQuery);
 
+function gotomain() {
+	window.location.href="index.html";
+}
+ 

@@ -6,20 +6,25 @@ var success = document.getElementById("success");
 
 var rent = function() {
     $("#rent_btn").on('click', function(e) {
-      
-
+      var erreurs = 0 ;
+        //get today's date value 
         console.log(' renting btn clicked ');
         var today = new Date();
         console.log(today.toTimeString());
+       //get the value of the inputs 
         var location_start =  document.getElementById("pich_up").value ;
         var location_drop =  document.getElementById("drop_off").value ;
         var pickup_date =  document.getElementById("book_pick_date").value ;
         var drop_date =  document.getElementById("book_off_date").value ;
-        var time_calender =  document.getElementById("time_pick").value ;
-
-        if (location_start =="" || location_drop =="" || pickup_date =="" || drop_date =="" || time_calender ==""  ) {
-            if (location_start =="" && location_drop =="" && pickup_date =="" && drop_date =="" && time_calender =="" ) {
-                 //visibility 
+        var name_client =  document.getElementById("name_client").value ;
+        var phone_numb =  document.getElementById("phone_numb").value ;
+        //verification of the values  
+        if (location_start =="" || location_drop =="" || pickup_date =="" || drop_date =="" || name_client =="" || phone_numb == ""  ) {
+            erreurs += 1 ;
+            //all of the inputs are empty 
+            if (location_start =="" && location_drop =="" && pickup_date =="" && drop_date =="" && name_client =="" && phone_numb == "") {
+                erreurs += 1 ;
+                //visibility 
              alert.style.visibility="visible"; ;
              //create alert 
              alert.innerHTML="<strong> Erreur  </strong>   - Tout les champs sont vides  ";
@@ -27,11 +32,13 @@ var rent = function() {
               window.setTimeout(function() {
                   $("#danger").fadeTo(500, 0).slideUp(500, function(){
                       $(this).remove(); 
+                      location.reload();
                   });
               }, 4000);
-            }else{
+            } 
 
                 if (location_start =="") {
+                    erreurs += 1 ;
                     //show alert visibility 
                      alert.style.visibility="visible";
                    //create alert 
@@ -39,11 +46,13 @@ var rent = function() {
                    //show alert 
                     window.setTimeout(function() {
                         $("#danger").fadeTo(500, 0).slideUp(500, function(){
-                            $(this).remove(); 
+                            $(this).remove();
+                            location.reload(); 
                         });
                     }, 4000);
                 }
                 if (location_drop =="") {
+                    erreurs += 1 ;
                     //visibility 
                      alert.style.visibility="visible";
                    //create alert 
@@ -52,10 +61,12 @@ var rent = function() {
                     window.setTimeout(function() {
                         $("#danger").fadeTo(500, 0).slideUp(500, function(){
                             $(this).remove(); 
+                            location.reload();
                         });
                     }, 4000);
                 }
                 if (pickup_date =="") {
+                    erreurs += 1 ;
                     //visibility 
                        alert.style.visibility="visible";
                    //create alert 
@@ -63,45 +74,67 @@ var rent = function() {
                    //show alert 
                     window.setTimeout(function() {
                         $("#danger").fadeTo(500, 0).slideUp(500, function(){
-                            $(this).remove(); 
+                            $(this).remove();
+                            location.reload(); 
                         });
                     }, 4000);
                 }
                 if (drop_date =="") {
+                    erreurs += 1 ;
                     //visibility 
                       alert.style.visibility="visible";
                     //create alert 
-                   alert.innerHTML="<strong> Erreur  </strong>   - Champ de drop date  est vide  ";
+                   alert.innerHTML="<strong> Erreur  </strong>   - veuillez saisir une date de depot   ";
                    //show alert 
                     window.setTimeout(function() {
                         $("#danger").fadeTo(500, 0).slideUp(500, function(){
-                            $(this).remove(); 
+                            $(this).remove();
+                            location.reload(); 
                         });
                     }, 4000);
                 }
-                if (time_calender =="") {
+                if (name_client =="") {
+                    erreurs += 1 ;
                     //visibility 
                       alert.style.visibility="visible";
                     //create alert 
-                   alert.innerHTML="<strong> Erreur  </strong>   - Champ de calendrier est vide  ";
+                   alert.innerHTML="<strong> Erreur  </strong>   - veuillez saisir votre nom   ";
                    //show alert 
                     window.setTimeout(function() {
                         $("#danger").fadeTo(500, 0).slideUp(500, function(){
                             $(this).remove(); 
+                            location.reload();
+                        });
+                    }, 4000);
+                }
+            
+                if (phone_numb =="") {
+                    erreurs += 1 ;
+                    //show alert visibility 
+                     alert.style.visibility="visible";
+                   //create alert 
+                   alert.innerHTML="<strong> Erreur  </strong>   - veuiller saisir un numero de telephone   ";
+                   //show alert 
+                    window.setTimeout(function() {
+                        $("#danger").fadeTo(500, 0).slideUp(500, function(){
+                            $(this).remove();
+                            location.reload(); 
                         });
                     }, 4000);
                 }
             }
+          
            
-        } 
+        
             console.log('pick location :'+ location_start);
             console.log('drop location :'+ location_drop);
             console.log('pick date :'+ pickup_date);
             console.log('drop date :'+ drop_date);
-            console.log('date on calender :'+ time_calender);
+            console.log('date on calender :'+ name_client);
  
         
         if (location_start.length < 2 ) {
+            erreurs += 1 ;
             //visibility 
               alert.style.visibility="visible";
             //create alert 
@@ -110,10 +143,12 @@ var rent = function() {
              window.setTimeout(function() {
                  $("#danger").fadeTo(500, 0).slideUp(500, function(){
                      $(this).remove(); 
+                     location.reload();
                  });
              }, 4000);
         }
         if (location_drop.length < 2 ) {
+            erreurs += 1 ;
             //visibility 
              alert.style.visibility="visible"; ;
             //create alert 
@@ -122,6 +157,7 @@ var rent = function() {
              window.setTimeout(function() {
                  $("#danger").fadeTo(500, 0).slideUp(500, function(){
                      $(this).remove(); 
+                     location.reload();
                  });
              }, 4000);
         }
@@ -129,15 +165,13 @@ var rent = function() {
         var date1 = $("#book_pick_date").datepicker('getDate').getTime(); 
         var date2 = $("#book_off_date").datepicker('getDate').getTime(); 
        
-        var same = today.getTime() === date1 ;
-        var notSame = today.getTime() !== date1 ;
-        var before = today.getTime() <= date1 ;
-        console.log("today and start day are the same : " + same);
-        console.log("today and start day aren't the same   : " + notSame);
-
-        console.log("compare "+dates.compare(date1 , date2));
+        var same = today.getTime() === date1 ; //compare 2 dates 
+        var notSame = today.getTime() !== date1 ; //compare 2 dates 
+        var before = today.getTime() <= date1 ;//compare 2 dates 
+ 
         
         if (dates.compare(date1 , date2) == 1) {
+            erreurs += 1 ;
             //visibility 
               alert.style.visibility="visible"; ;  
            //create alert 
@@ -145,16 +179,30 @@ var rent = function() {
            //show alert 
             window.setTimeout(function() {
                 $("#danger").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove(); 
+                    $(this).remove();
+                    location.reload(); 
                 });
             }, 4000);
+            
         }
-      
+        if (erreurs == 0) {
+             
+            //visibility 
+              success.style.visibility="visible"; ;  
+           //create alert 
+           success.innerHTML="<strong> Success  </strong>   - vous avez bien remplis la form de reservation merci pour votre attention   ";
+           //show alert 
+            window.setTimeout(function() {
+                $("#success").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove(); 
+                    location.reload();
+                });
+            }, 4000);
+            
+        }
 
-  
 
-
-    });
+    } );
     };
     rent();
  
